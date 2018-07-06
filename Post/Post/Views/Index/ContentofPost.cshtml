@@ -1,0 +1,104 @@
+﻿@model Post.Models.PostProp
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Blog</h2>
+    <h3>Tu Post</h3>
+
+    @using (Html.BeginForm("AddComments", "Index"))
+    {
+
+        <div style="visibility: hidden">
+            @Html.LabelFor(model => model.ID)
+            @Html.TextBoxFor(model => model.ID, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title)
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        </div>
+
+
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("Fecha")
+                    @Html.TextBoxFor(model => model.CustomLoanStarDateTwo, new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.Label("Categoria")
+                    @Html.TextBoxFor(model => model.CategoryId, new { @class = "form-control" })
+                </td>
+
+            </tr>
+        </table>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        </div>
+
+        <h4>Agrega un Commentario</h4>
+
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("User ID")
+                    @Html.TextBoxFor(model => model.UserID, new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.Label("Nombre")
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Commentary")
+                    @Html.TextAreaFor(model => model.CommentByUser, new { @class = "form-control" })
+                </td>
+            </tr>
+        </table>
+
+        <p></p>
+        <div class="container">
+            <input type="submit" value="Guardar" />
+        </div>
+        <p></p><p></p>
+
+
+
+               <div class="container">
+                   <h4>Comentarios de este POST</h4>
+               
+
+                   @using (Html.BeginForm("AddComments", "Index"))
+                   {
+                       <div class="form-group">
+                           @Html.Label("Nombre")
+                           @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                       </div>
+
+
+                       <table>
+                           <tr>
+                               <td>
+                                   @Html.Label("Comentario")
+                                   @Html.TextBoxFor(model => model.CommentByUser, new { @class = "form-control" })
+                               </td>
+
+                           </tr>
+                       </table>
+
+                   }
+               </div>
+
+    }
+
+</div>

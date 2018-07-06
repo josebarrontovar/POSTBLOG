@@ -1,0 +1,52 @@
+﻿@model List<Post.Models.PostProp>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>BLOG</h2>
+
+<h3>POST's</h3>
+
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-md-12 col-md-offset-11">
+            @Html.ActionLink("Agregar", "Create")
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Fecha de Publicacion</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>   @Html.ActionLink(item.Title, "ContentofPost", new { ID = item.ID })</td>
+                    <td>@item.Description</td>
+                    <td>@item.CustomLoanStarDateTwo</td>
+                    <td>@item.CategoryId</td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { ID = item.ID })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Eliminar", "Delete", new { ID = item.ID })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

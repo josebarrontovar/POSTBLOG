@@ -1,0 +1,47 @@
+﻿@model Post.ViewModels.IndexViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+
+<div class="container">
+    <h2>Blog </h2>
+    <h3>Crea un nuevo POST</h3>
+
+    @using (Html.BeginForm("Create", "Index"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostPropVM.ID)
+            @Html.TextBoxFor(model => model.PostPropVM.ID, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostPropVM.Title)
+            @Html.TextBoxFor(model => model.PostPropVM.Title, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostPropVM.Description)
+            @Html.TextAreaFor(model => model.PostPropVM.Description, new { @class = "form-control" })
+
+        </div>
+
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.PostPropVM.CategoryId)
+                @Html.DropDownListFor(model => model.PostPropVM.CategoryId, new SelectList(Model.Categorys, "Id", "Name"), new { @class = "form-control" })
+            </div>
+
+        <input type="submit" value="Crear" />
+    }
+
+</div>

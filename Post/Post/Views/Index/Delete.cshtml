@@ -1,0 +1,28 @@
+﻿@model Post.Models.PostProp
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Eliminar</h2>
+    @using (Html.BeginForm("Delete", "Index"))
+    {
+        @Html.HiddenFor(m => m.Title)
+        @Html.HiddenFor(m => m.Description)
+        
+
+        <div class="form-group">
+            <p>
+                Está seguro que desea eliminar al estudiante con matrícula @Model.Title ?
+            </p>
+        </div>
+
+        <p>
+            @Html.ActionLink("Cancelar", "Index")
+            <input type="submit" value="Sí, eliminar" />
+        </p>
+    }
+</div>
+
+
